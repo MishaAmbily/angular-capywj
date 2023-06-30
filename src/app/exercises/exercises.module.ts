@@ -8,6 +8,7 @@ import {Exercise3Component} from "./exercise3/exercise3.component";
 import {Exercise4Component} from "./exercise4/exercise4.component";
 import {ExerciseNotFoundComponent} from "./exerciseNotFound/exerciseNotFound.component";
 import {Exercise4Module} from "./exercise4/exercise4.module";
+import { Exercise2Module } from './exercise2/exercise2.module';
 
 
 
@@ -16,6 +17,7 @@ import {Exercise4Module} from "./exercise4/exercise4.module";
   imports: [
     CommonModule,
     Exercise1Module,
+    Exercise2Module,
     Exercise4Module,
     RouterModule.forChild([{
       path: '1',

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Exercise1Component } from './exercise1.component';
 import {RouterModule} from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,6 +11,8 @@ import {RouterModule} from "@angular/router";
     Exercise1Component
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     RouterModule.forChild([{
       path: '',

@@ -1,0 +1,9 @@
+<div>
+   <h3><b>Inverted Parent-Inverted Child</b></h3>
+    <label>Input field from the child component</label>
+    <br />
+    <input type="text" id="childInput" #userName />
+    <button class="btn btn-success" type="submit" id="childButton" (click)="buttonClick(userName.value)">
+       Click
+    </button>
+ </div>
