@@ -1,20 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-inverted-child',
-  templateUrl: './inverted-child.component.html',
-  styleUrls: ['./inverted-child.component.css']
+  templateUrl:'./inverted-child.component.html',
+  
 })
-export class InvertedChildComponent implements OnInit {
+export class InvertedChildComponent {
+  inputValue: string = '';
+  @Output() valueEntered: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onValueEntered() {
+    this.valueEntered.emit(this.inputValue);
   }
-
-  @Output() childEvent = new EventEmitter();
-  buttonClick(value: string) {
-     this.childEvent.emit(value);
-  }
-
 }

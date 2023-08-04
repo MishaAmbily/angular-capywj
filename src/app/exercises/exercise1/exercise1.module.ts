@@ -8,12 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    Exercise1Component
+    Exercise1Component,
   ],
   imports: [
-    ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild([{
       path: '',
       component: Exercise1Component

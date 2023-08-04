@@ -11,7 +11,7 @@ import {AfterViewChecked, Component, HostListener, OnInit} from '@angular/core';
     </div>
 
     <ul>
-      <li *ngFor="let product of products">
+      <li *ngFor="let product of products,trackBy:trackByProductId">
         <app-product [product]="product" (initializedCount)="updateHighestNumberOfProductInitialized($event)"></app-product>
       </li>
     </ul>
@@ -59,9 +59,14 @@ export class ProductListComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
+    this.viewCheckedCount = Math.floor((this.products.length -1) / 10);
     ++this.viewCheckedCount;
   }
 
+
+trackByProductId(index: number, product: Product): string {
+  return product.id;
+}
 }
 
 

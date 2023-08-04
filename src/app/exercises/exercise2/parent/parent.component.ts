@@ -1,18 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.css']
+    
 })
-export class ParentComponent implements OnInit {
+export class ParentComponent {
 
-  constructor() { }
+  inputValue: string = '';
+  firstValue:string = '';
+  
 
-  ngOnInit(): void {
-  }
-  @Output() parentEvent = new EventEmitter();
-  buttonClick(value: string) {
-     this.parentEvent.emit(value);
+  displayValue() {
+   this.firstValue = this.inputValue;
+    
+   
   }
 }

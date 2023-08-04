@@ -21,40 +21,44 @@
 <hr/>
 <span>
 
-<form (ngSubmit)="submitForm()" [formGroup]="registrationForm" novalidate>
-
-  <div>
-  <label for="name">Name</label>
-  <input type="text" id="name" formControlName="name">
-  <div *ngIf="registrationForm.get('name')?.invalid && (registrationForm.get('name')?.dirty || registrationForm.get('name')?.touched)">
-  <div *ngIf="registrationForm.get('name')?.errors?.required">Name is required.</div>
-</div>
- </div>
-
-  <div>
-
-    <label for="email">Email</label>
-
-    <input type="email" id="email" formControlName="email">
-    <div *ngIf="registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)">
-    <div *ngIf="registrationForm.get('email')?.errors?.required">Email is required.</div>
-    <div *ngIf="registrationForm.get('email')?.errors?.pattern">Invalid email format.</div>
-    </div>
-
+  <div class="container-fluid">
+    <form [formGroup]="regForm" (ngSubmit)="submitForm()">
+  
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" formControlName="name">
+        <div *ngIf="regForm.controls['name']?.invalid && regForm.controls['name']?.touched" class="error-message">
+          <div *ngIf="regForm.controls['name'].errors?.['required']">Name is required.</div>
+        
+          
+        </div>
+      </div>
+  
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" formControlName="email">
+        <div *ngIf="regForm.controls['email']?.invalid && regForm.controls['email']?.touched" class="error-message">
+          <div *ngIf="regForm.controls['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="regForm.controls['email'].errors?.['email']">Please enter a valid email address.</div>
+        </div>
+      </div>
+  
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" formControlName="password">
+        <div *ngIf="regForm.controls['password']?.invalid && regForm.controls['password']?.touched" class="error-message">
+          <div *ngIf="regForm.controls['password']?.invalid && regForm.controls['password']?.touched" class="error-message">
+            <div *ngIf="regForm.controls['password'].errors?.['required']">Password is required.</div>
+            <div *ngIf="regForm.controls['password'].errors?.['minlength']">Password should have a minimum length of 4 characters.</div>
+            <div *ngIf="regForm.controls['password'].errors?.['maxlength']">Password should have a maximum length of 10 characters.</div>
+            <!--<div *ngIf="regForm.controls['password'].errors?.specialChars">Password should contain at least 1 special character.</div>-->
+            <div *ngIf="regForm.controls['password'].errors?.['pattern']">Password should contain at least one special character.</div>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="regForm.invalid">Register</button>
+  
+   
   </div>
-
-  <div>
-    <label for="password">Password</label>
-    <input type="password" id="password" formControlName="password">
-    <div *ngIf="registrationForm.get('password')?.invalid && (registrationForm.get('password')?.dirty || registrationForm.get('password')?.touched)">
-      <div *ngIf="registrationForm.get('password')?.errors?.required">Password is required.</div>
-      <div *ngIf="registrationForm.get('password')?.errors?.minlength">Password should be at least 4 characters long.</div>
-      <div *ngIf="registrationForm.get('password')?.errors?.maxlength">Password should not exceed 10 characters.</div>
-      <div *ngIf="registrationForm.get('password')?.errors?.specialChars">Password should contain at least 1 special character.</div>
-      <div *ngIf="registrationForm.get('password')?.errors?.consecutiveChars">Password should not have consecutive characters.</div>
-    </div>
-
-  </div>
-  <button class="btn btn-success" type="submit" [disabled]="registrationForm.invalid">Register</button>
-</form>
-</span>
+  
+  

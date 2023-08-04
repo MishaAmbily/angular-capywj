@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-inverted-parent',
   templateUrl: './inverted-parent.component.html',
-  styleUrls: ['./inverted-parent.component.css']
+  
 })
-export class InvertedParentComponent implements OnInit {
+export class InvertedParentComponent {
+  inputValue: string = '';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-  names = [];
-  addName(value: string) {
-     this.names.push(value);
+  displayValue(value: string) {
+    this.inputValue = value;
   }
 }

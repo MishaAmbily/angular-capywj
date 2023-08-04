@@ -1,8 +1,6 @@
 <div>
-    <label>Input field from the Parent component</label>
-    <br />
-    <input type="text" id="parentInput" #userName />
-    <button class="btn btn-success" type="submit" id="parentButton" (click)="buttonClick(userName.value)">
-       Click
-    </button>
+   <label for="inputField">Enter Value:</label>
+   <input type="text" id="inputField" [(ngModel)]="inputValue" placeholder="Enter value">
+   <button (click)="displayValue()">Display</button>
  </div>
+ <app-child [value]="firstValue" ></app-child>

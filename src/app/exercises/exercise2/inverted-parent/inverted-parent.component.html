@@ -1,8 +1,5 @@
-<div> 
-    <app-inverted-child (childEvent)="addName($event)"></app-inverted-child>
-    <label>Names:</label>
-    <br />
-    <p *ngFor="let name of names">
-    <span>{{ name }}</span>
-    </p>
- </div>
+
+<app-inverted-child (valueEntered)="displayValue($event)"></app-inverted-child>
+<div>
+  <p>second value: {{ inputValue }}</p>
+</div>

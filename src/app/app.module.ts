@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RouterModule} from "@angular/router";
 import { Exercise1Component } from './exercises/exercise1/exercise1.component';
-import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -14,12 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     AppRoutingModule,
-    //RouterModule.forRoot([{
-      //path: 'exercises',
-     // loadChildren: () =>   import('./exercises/exercises.module').then((m) => m.ExercisesModule),
-    //}]),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

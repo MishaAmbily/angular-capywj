@@ -1,47 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-exercise1',
   templateUrl: './exercise1.component.html',
   styleUrls: ['./exercise1.component.css']
 })
-
 export class Exercise1Component implements OnInit {
-  registrationForm!: FormGroup;
+
+  user =  {
+    name: '',
+    email: '',
+    password: ''
+  };
+  
+  regForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.registrationForm = this.formBuilder.group({
+    this.regForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
-      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10), this.passwordComplexityValidator()]]
-
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10), Validators.pattern('^(?=.*[\\W_]).*$')]]
     });
-
   }
-  passwordComplexityValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-      if (value && value.length >= 4 && value.length <= 10) {
-        if (!/\W/.test(value)) {
-          return { specialChars: true };
-        }
-        if (/(.)\1/.test(value)) {
-          return { consecutiveChars: true };
+      submitForm() {
+        if (this.regForm.valid) {
+          this.user.name = this.regForm.value.name;
+          this.user.email = this.regForm.value.email;
+          this.user.password = this.regForm.value.password;
+          console.log(this.user);
         }
       }
-      return null;
-    };
-  }
-
-  submitForm(): void {
-    if (this.registrationForm.valid) {
-      console.log('Registration successful!');
     }
-  }
-}
+  
+
+
+
+
 
 
 
